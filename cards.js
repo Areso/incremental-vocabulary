@@ -1,8 +1,0 @@
-cards = [{"id":1,
-          "en_sentence":"I have a new house now",
-          "sp_sentence":"Ahora yo tengo __ ____ nueva",
-          "answer":"una casa"},
-         {"id":1,
-          "en_sentence":"I have a new home now",
-          "sp_sentence":"Ahora yo tengo __ nuevo ____",
-          "answer":"un hogar"},

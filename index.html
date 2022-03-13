@@ -1,2 +1,37 @@
-# incremental-vocabulary
-From En to Spanish (in the first place)
+<html>
+<head>
+<title>
+Incremental Vocabulary Trainee
+</title>
+</head>
+	<script>
+		if (window.location.href.indexOf("file")===-1){
+			webserver = "https://ivoc.areso.pro:7005";
+			dev_flag  = false;
+		} else {
+			webserver = "http://localhost:6990";
+			dev_flag  = true;
+		} 
+	</script>
+	<script src="main.js"></script>
+<body>
+Server status: <span id="server">no data</span><br>
+Language pair selector: En-Sp (learn Spanish through English)<br>
+<table border>
+  <tr>
+    <td width="250px">
+      <div id="textQst" style="margin-top: 30px">
+      </div>
+      <div id="divAnswer">
+        <textarea id="areaAnswer"></textarea>
+      </div>
+      <br>
+      <button id="btnCheck">Check</button>
+    </td>
+    <td width="150px">
+    Records table:
+    </td>
+  </tr>
+</table>
+</body>
+</html>
