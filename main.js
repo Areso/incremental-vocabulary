@@ -1,3 +1,4 @@
+ivoc = {}
 function checkLocalAccount(){
 	if (localStorage.getItem('ivoc')!==null) {
 		//
@@ -12,23 +13,25 @@ function showDialog(){
 	}
 }
 function createNewAcc(){
-	url = webserver +'/api/create_acc';
+	url = webserver +'/api/create_account';
 	makeAjaxCall(url, 'POST', '', setupAcc);
 }
-function setupAcc(){
-	console.log("setup account")
+function setupAcc(answerJson){
+	console.log("setup account");
+	ivoc.token = answerJson["token"]
+	localStorage.setItem('ivoc', JSON.stringify(ivoc));
 }
 function loadFromCloud(){
 	
 }
-function makeAjaxCall(url, methodType, dateToSend, callback){
+function makeAjaxCall(url, methodType, dataToSend, callback){
    var xhr = new XMLHttpRequest();
    xhr.open(methodType, url, true);
    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
    if (methodType==="GET"){
      xhr.send();
    } else {
-     xhr.send(dataToParse);
+     xhr.send(dataToSend);
    }
    xhr.onreadystatechange = function(){
      if (xhr.readyState === 4){
@@ -46,3 +49,4 @@ function makeAjaxCall(url, methodType, dateToSend, callback){
    }
    console.log("request sent succesfully");
 }
+checkLocalAccount()
