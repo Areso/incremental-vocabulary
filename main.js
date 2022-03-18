@@ -1,7 +1,12 @@
-ivoc = {}
+ivoc = { }
+function clearLocalAccount(){
+	localStorage.removeItem('ivoc')
+}
 function checkLocalAccount(){
 	if (localStorage.getItem('ivoc')!==null) {
-		//
+		ivoc = JSON.parse(localStorage.getItem('ivoc'))
+		token = ivoc.token 
+		console.log(token)
 	} else {
 		showDialog()
 	}
@@ -18,7 +23,11 @@ function createNewAcc(){
 }
 function setupAcc(answerJson){
 	console.log("setup account");
-	ivoc.token = answerJson["token"]
+	console.log(answerJson["token"])
+	console.log(ivoc)
+	ivoc.token = answerJson["token"];
+	console.log(ivoc.token);
+	console.log(ivoc);
 	localStorage.setItem('ivoc', JSON.stringify(ivoc));
 }
 function loadFromCloud(){
@@ -38,7 +47,9 @@ function makeAjaxCall(url, methodType, dataToSend, callback){
         if (xhr.status === 200){
            console.log("xhr done successfully");
            var resp = xhr.responseText;
+           console.log(resp)
            var respJson = JSON.parse(resp);
+           console.log(respJson)
            callback(respJson);
         } else {
            console.log("xhr failed");
@@ -49,4 +60,4 @@ function makeAjaxCall(url, methodType, dataToSend, callback){
    }
    console.log("request sent succesfully");
 }
-checkLocalAccount()
+checkLocalAccount();
